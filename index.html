@@ -203,43 +203,30 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#getting-started" title="Getting started" class="md-nav__link">
-    Getting started
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#installing-lightwood" title="Installing Lightwood" class="md-nav__link">
     Installing Lightwood
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#how-to-use" title="How to use" class="md-nav__link">
-    How to use
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#config" title="Config" class="md-nav__link">
-    Config
+  <a href="#quick-example" title="Quick example" class="md-nav__link">
+    Quick example
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#input_features" title="input_features" class="md-nav__link">
-    input_features
+  <a href="#learn" title="Learn" class="md-nav__link">
+    Learn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict" title="Predict" class="md-nav__link">
+    Predict
   </a>
   
 </li>
@@ -272,18 +259,6 @@
   </li>
 
     
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="command_line/" title="Command Line" class="md-nav__link">
-      Command Line
-    </a>
-  </li>
-
-    
   </ul>
 </nav>
                   </div>
@@ -305,43 +280,30 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#getting-started" title="Getting started" class="md-nav__link">
-    Getting started
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#installing-lightwood" title="Installing Lightwood" class="md-nav__link">
     Installing Lightwood
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#how-to-use" title="How to use" class="md-nav__link">
-    How to use
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#config" title="Config" class="md-nav__link">
-    Config
+  <a href="#quick-example" title="Quick example" class="md-nav__link">
+    Quick example
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#input_features" title="input_features" class="md-nav__link">
-    input_features
+  <a href="#learn" title="Learn" class="md-nav__link">
+    Learn
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predict" title="Predict" class="md-nav__link">
+    Predict
   </a>
   
 </li>
@@ -369,91 +331,94 @@
                 
                 
                 <h1 id="intro">Intro</h1>
-<p>Think of Lightwood as Keras for Pytorch. The current implementation is inspired on early work we did in MindsDB and ideas from <a href="https://github.com/uber/ludwig">Ludwig</a>.</p>
-<p>The objective is that given a dataset you can do two things:</p>
+<p>Think of Lightwood as <a href="https://keras.io/">Keras</a>+<a href="https://github.com/uber/ludwig">Ludwig</a> but for Pytorch, with two objectives:</p>
 <ul>
-<li>Train a model with just one line of code</li>
-<li>Give you full flexibility into changing, modyfing every single part of the process if you so wish to.</li>
+<li>Make it so simple that you can build models with just a line of code.</li>
+<li>Make it so flexible that change and customize everything.</li>
 </ul>
-<p>The main concept is that ML models can be very modular, and each building block is something that you can thinker with.</p>
-<p>The three main building blocks are:</p>
-<ul>
-<li>Encoders: That is, you take some data in and output a vector/tensor representation of this data.</li>
-<li>Mixers: How you mix the output of encoders and also other mixers</li>
-<li>Decoders: How you from a vector/tensor of data to a representation of such data that you wish. (For example: from a vector to actual text)</li>
-</ul>
-<h2 id="getting-started">Getting started</h2>
-<h3 id="installing-lightwood">Installing Lightwood</h3>
-<pre><code class="python">pip3 install lightwood
-</code></pre>
+<h2 id="installing-lightwood">Installing Lightwood</h2>
+<div class="codehilite"><pre><span></span>pip3 install lightwood
+</pre></div>
+
 
 <p>You would need python 3.5 or higher.</p>
-<h2 id="how-to-use">How to use</h2>
-<p>Asume that you have a training file such as this one.</p>
-<p>You need to create a configuration dictionary that describes what you want as input and what you want as output as follows:</p>
-<pre><code class="python">config = {
-        'name': 'test',
-        'input_features': [
-            {
-                'name': 'x',
-                'type': 'numeric'
-            },
-            {
-                'name': 'y',
-                'type': 'numeric'
-            }
-        ],
+<h2 id="quick-example">Quick example</h2>
+<p>Asume that you have a training file (sensor_data.csv) such as this one. </p>
+<table>
+<thead>
+<tr>
+<th>sensor1</th>
+<th>sensor2</th>
+<th>sensor3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>-1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>1</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>And you would like to learn to predict the values of <em>sensor3</em> given the readings in <em>sensor1</em> and <em>sensor2</em>.</p>
+<h3 id="learn">Learn</h3>
+<p>You can train a Predictor as follows:</p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">lightwood</span> <span class="kn">import</span> <span class="n">Predictor</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
 
-        'output_features': [
-            {
-                'name': 'z',
-                'type': 'numeric'
-            }
-        ]
+<span class="n">sensor3_predictor</span> <span class="o">=</span> <span class="n">Predictor</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sensor3&#39;</span><span class="p">])</span>
+<span class="n">sensor3_predictor</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">from_data</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sensor_data.csv&#39;</span><span class="p">))</span>
+</pre></div>
 
-    }
-</code></pre>
 
-<p>Then you can ask Ludwig to learn how to predict the output_features:</p>
-<pre><code class="python">from lightwood import Predictor
-import pandas as pd
+<h3 id="predict">Predict</h3>
+<p>You can now given new readings from <em>sensor1</em> and <em>sensor2</em> predict what <em>sensor3</em> will be.</p>
+<div class="codehilite"><pre><span></span><span class="n">prediction</span> <span class="o">=</span> <span class="n">sensor3_predictor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">when</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sensor1&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;sensor2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">})</span>
+<span class="k">print</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>
+</pre></div>
 
-predictor = Predictor(definition=config)
-predictor.learn(from_data=pd.read_csv(file))
-print(predictor.train_accuracy)
-print(predictor.predict(when_data=pandas.DataFrame({'x': [1], 'y': [-1]})))
 
-</code></pre>
-
-<h2 id="config">Config</h2>
-<p>Configs are made out of three blocks:</p>
-<h3 id="input_features">input_features</h3>
-<p>Its a simple dict that has the following schema</p>
-<pre><code class="python">{
-    'name': str,
-    Optional('type'): any of COLUMN_DATA_TYPES,
-    Optional('encoder_class'): object,
-    Optional('encoder_attrs'): dict
-}
-</code></pre>
-
-<ul>
-<li>name: is the name of the column as it is in the input data frame</li>
-<li>type: is the type od data contained. Where out of the box, supported COLUMN_DATA_TYPES are:</li>
-</ul>
-<pre><code class="python">    NUMERIC = 'numeric'
-    CATEGORICAL = 'categorical'
-    DATETIME = 'datetime'
-    IMAGE = 'image'
-    TEXT = 'text'
-    TIME_SERIES = 'time_series'
-</code></pre>
-
-<p>If you specify the type, it will use the default encoder for that type. </p>
-<ul>
-<li>encoder_class: This is if you want to replace the default encoder with a different one, so you put the encoder class there</li>
-<li>encoder_attrs: These are the attributes that you want to setup on the encoder once the class its initialized </li>
-</ul>
+<p>Of course that example was just the tip of the iceberg, please read about the main concepts of lightwood, the API and then jump into examples.</p>
                 
                   
                 

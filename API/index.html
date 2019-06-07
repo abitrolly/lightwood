@@ -83,7 +83,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#python-api" tabindex="1" class="md-skip">
+      <a href="#api" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -196,22 +196,92 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        API
+      </label>
+    
     <a href="./" title="API" class="md-nav__link md-nav__link--active">
       API
     </a>
     
-  </li>
-
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
     
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predictor" title="Predictor" class="md-nav__link">
+    Predictor
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-blocks" title="Building Blocks" class="md-nav__link">
+    Building Blocks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constructor" title="Constructor" class="md-nav__link">
+    Constructor
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predictrors-config" title="Predictror's config" class="md-nav__link">
+    Predictror's config
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features" title="Features" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mixers" title="Mixers" class="md-nav__link">
+    Mixers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
       
       
-
-
-  <li class="md-nav__item">
-    <a href="../command_line/" title="Command Line" class="md-nav__link">
-      Command Line
-    </a>
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -232,6 +302,75 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predictor" title="Predictor" class="md-nav__link">
+    Predictor
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-blocks" title="Building Blocks" class="md-nav__link">
+    Building Blocks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constructor" title="Constructor" class="md-nav__link">
+    Constructor
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predictrors-config" title="Predictror's config" class="md-nav__link">
+    Predictror's config
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features" title="Features" class="md-nav__link">
+    Features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mixers" title="Mixers" class="md-nav__link">
+    Mixers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -243,7 +382,99 @@
               
                 
                 
-                <h1 id="python-api">Python API</h1>
+                <h1 id="api">API</h1>
+<h2 id="predictor">Predictor</h2>
+<p>Lightwood has one main class; the <strong>Predictor</strong>, which is what you train from your data, and what you get predictions from.</p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">lightwood</span> <span class="kn">import</span> <span class="n">Predictor</span>
+</pre></div>
+
+
+<h3 id="building-blocks">Building Blocks</h3>
+<p>The main concept is that ML models can be very modular, and each building block is something that you can thinker with. There are 3 main building blocks (<em>features, encoders, mixers</em>).</p>
+<p><img alt="building_blocks" src="https://1fykyq3mdn5r21tpna3wkdyi-wpengine.netdna-ssl.com/wp-content/uploads/2019/02/image3-1068x927.png" /></p>
+<ul>
+<li><strong>Features</strong>:<ul>
+<li><strong>input_features</strong>: These are the columns in your dataset that you want to take as input for your predictor.</li>
+<li><strong>output_features</strong>: These are the columns in your dataset that you want to learn how to predict.</li>
+</ul>
+</li>
+<li><strong>Encoders</strong>: These are tools to turn the data in your input or output features into vector/tensor representations and vice-versa.</li>
+<li><strong>Mixers</strong>: How you mix the output of encoded features and also other mixers</li>
+</ul>
+<h2 id="constructor">Constructor</h2>
+<div class="codehilite"><pre><span></span><span class="n">my_predictor</span> <span class="o">=</span> <span class="n">Predictor</span><span class="p">(</span> <span class="n">output</span><span class="o">=</span><span class="p">[]</span> <span class="o">|</span> <span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="o">...</span><span class="p">}</span> <span class="o">|</span> <span class="n">load_from_path</span><span class="o">=&lt;</span><span class="n">file_path</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>It can take on of the following three arguments:</p>
+<ul>
+<li><strong>load_from_path</strong>: If you have a saved predictor that you want to load, just give the path to the file</li>
+<li><strong>output</strong>: A list with the column names you want to predict. (<em>Note: If you pass this argument, lightwood will simply try to guess the best config possible</em>)</li>
+<li><strong>config</strong>: A dictionary, containing the configuration on how to glue all the building blocks. </li>
+</ul>
+<h3 id="predictrors-config">Predictror's <strong>config</strong></h3>
+<p>The config argument allows you to pass a dictionary that defines and gives you absolute control over how to build your predictive model.
+A config example goes as follows:</p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">lightwood</span> <span class="kn">import</span> <span class="n">COLUMN_DATA_TYPES</span><span class="p">,</span> <span class="n">BUILTIN_MIXERS</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+
+        <span class="s1">&#39;input_features&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;sensor1&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">COLUMN_DATA_TYPES</span><span class="o">.</span><span class="n">NUMERIC</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;sensor2&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">COLUMN_DATA_TYPES</span><span class="o">.</span><span class="n">NUMERIC</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+
+        <span class="s1">&#39;output_features&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;action_to_take&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">COLUMN_DATA_TYPES</span><span class="o">.</span><span class="n">CATEGORICAL</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+
+        <span class="s1">&#39;default_mixer&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="n">BUILTIN_MIXERS</span><span class="o">.</span><span class="n">NnMixer</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+</pre></div>
+
+
+<h4 id="features">Features</h4>
+<p>Both <strong>input_features</strong> and <strong>output_features</strong> configs are simple dicts that have the following schema</p>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">):</span> <span class="nb">any</span> <span class="n">of</span> <span class="n">COLUMN_DATA_TYPES</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">(</span><span class="s1">&#39;encoder_class&#39;</span><span class="p">):</span> <span class="nb">object</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">(</span><span class="s1">&#39;encoder_attrs&#39;</span><span class="p">):</span> <span class="nb">dict</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li><strong>name</strong>: is the name of the column as it is in the input data frame</li>
+<li><strong>type</strong>: is the type od data contained. Where out of the box, supported COLUMN_DATA_TYPES are:</li>
+</ul>
+<div class="codehilite"><pre><span></span>    <span class="n">NUMERIC</span> <span class="o">=</span> <span class="s1">&#39;numeric&#39;</span>
+    <span class="n">CATEGORICAL</span> <span class="o">=</span> <span class="s1">&#39;categorical&#39;</span>
+    <span class="n">DATETIME</span> <span class="o">=</span> <span class="s1">&#39;datetime&#39;</span>
+    <span class="n">IMAGE</span> <span class="o">=</span> <span class="s1">&#39;image&#39;</span>
+    <span class="n">TEXT</span> <span class="o">=</span> <span class="s1">&#39;text&#39;</span>
+    <span class="n">TIME_SERIES</span> <span class="o">=</span> <span class="s1">&#39;time_series&#39;</span>
+</pre></div>
+
+
+<p>If you specify the type, it will use the default encoder for that type or else you can specify the encoder you want to use. </p>
+<ul>
+<li><strong>encoder_class</strong>: This is if you want to replace the default encoder with a different one, so you put the encoder class there</li>
+<li><strong>encoder_attrs</strong>: These are the attributes that you want to setup on the encoder once the class its initialized </li>
+</ul>
+<h4 id="mixers">Mixers</h4>
                 
                   
                 
@@ -278,20 +509,6 @@
             </div>
           </a>
         
-        
-          <a href="../command_line/" title="Command Line" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Command Line
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
         
       </nav>
     </div>

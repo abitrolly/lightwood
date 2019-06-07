@@ -475,6 +475,18 @@ A config example goes as follows:</p>
 <li><strong>encoder_attrs</strong>: These are the attributes that you want to setup on the encoder once the class its initialized </li>
 </ul>
 <h4 id="mixers">Mixers</h4>
+<p>The <strong>default_mixer</strong> key, provides information as to what mixer to use. The schema for this variable is as follows:</p>
+<div class="codehilite"><pre><span></span><span class="n">default_mixer_schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">({</span>
+    <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
+    <span class="n">Optional</span><span class="p">(</span><span class="s1">&#39;attrs&#39;</span><span class="p">):</span> <span class="nb">dict</span>
+<span class="p">})</span>
+</pre></div>
+
+
+<ul>
+<li><strong>class</strong>: Its the actual class, that defines the Mixer, you can use any of the BUILTIN_MIXERS or pass your own.</li>
+<li><strong>attrs</strong>: This is a dictionary containing the attributes you want to replace on the mixer object once its initialized. We do this, so you have maximum flexibility as to what you can customize on your Mixers.</li>
+</ul>
                 
                   
                 

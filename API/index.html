@@ -36,7 +36,7 @@
     
     
       
-        <title>API - Lightwood</title>
+        <title>Predictor - Lightwood</title>
       
     
     
@@ -127,7 +127,7 @@
               Lightwood
             </span>
             <span class="md-header-nav__topic">
-              API
+              Predictor
             </span>
           
         </div>
@@ -258,11 +258,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        API
+        Predictor
       </label>
     
-    <a href="./" title="API" class="md-nav__link md-nav__link--active">
-      API
+    <a href="./" title="Predictor" class="md-nav__link md-nav__link--active">
+      Predictor
     </a>
     
       
@@ -299,8 +299,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#default_mixer" title="default_mixer" class="md-nav__link">
-    default_mixer
+  <a href="#mixer" title="mixer" class="md-nav__link">
+    mixer
   </a>
   
 </li>
@@ -410,8 +410,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#default_mixer" title="default_mixer" class="md-nav__link">
-    default_mixer
+  <a href="#mixer" title="mixer" class="md-nav__link">
+    mixer
   </a>
   
 </li>
@@ -532,7 +532,7 @@ A config example goes as follows:</p>
         <span class="p">],</span>
 
         <span class="c1">## OPTIONAL</span>
-        <span class="s1">&#39;default_mixer&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;mixer&#39;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="n">BUILTIN_MIXERS</span><span class="o">.</span><span class="n">NnMixer</span>
         <span class="p">}</span>
 
@@ -564,9 +564,9 @@ A config example goes as follows:</p>
 </ul>
 </div>
 </div>
-<h4 id="default_mixer">default_mixer</h4>
+<h4 id="mixer">mixer</h4>
 <p>The <strong>default_mixer</strong> key, provides information as to what mixer to use. The schema for this variable is as follows:</p>
-<div class="codehilite"><pre><span></span><span class="n">default_mixer_schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">({</span>
+<div class="codehilite"><pre><span></span><span class="n">mixer_schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">({</span>
     <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
     <span class="n">Optional</span><span class="p">(</span><span class="s1">&#39;attrs&#39;</span><span class="p">):</span> <span class="nb">dict</span>
 <span class="p">})</span>
